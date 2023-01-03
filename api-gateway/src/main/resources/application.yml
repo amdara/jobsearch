@@ -1,0 +1,55 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+
+
+server:
+  port: 9096
+
+spring:
+  application:
+    name: "api-gateway"
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+      routes:
+        - id: authentication-service
+          uri: http://authentication-service:1992/
+          predicates:
+            - Path=/authentication/**
+        - id: job-seeker-service
+          uri: http://job-seeker-service:9091/
+          predicates:
+            - Path=/jobseeker/**
+        - id: recruiter-service
+          uri: http://recruiter-service:8099/
+          predicates:
+            - Path=/recruiter/**
+
+        - id: job-search-service
+          uri: http://job-search-service:8888/
+          predicates:
+            - Path=/jobsearch/**
+
+        - id: job-service
+          uri: http://job-service:9090/
+          predicates:
+            - Path=/jobservice/**
+
+        - id: feedback-service
+          uri: http://feedback-service:9095/
+          predicates:
+            - Path=/feedbackservice/**
+
+        - id: email-service
+          uri: http://email-service:8070/
+          predicates:
+            - Path=/email/**
+        - id: chat-service
+          uri: http://chat-service:8090/
+          predicates:
+            - Path=/chatservice/**

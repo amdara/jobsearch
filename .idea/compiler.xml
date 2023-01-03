@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="job-service" />
+        <module name="config-server" />
+        <module name="authentication-service" />
+        <module name="messaging-stomp-websocket" />
+        <module name="email-service" />
+        <module name="api-gateway" />
+        <module name="Aggregator" />
+        <module name="recruiter-service" />
+        <module name="feedback-service" />
+        <module name="eureka-server" />
+        <module name="job-seeker-service" />
+        <module name="job-search-service" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Aggregator" target="11" />
+      <module name="api-gateway" target="11" />
+      <module name="authentication-service" target="1.8" />
+      <module name="config-server" target="11" />
+      <module name="email-service" target="11" />
+      <module name="eureka-server" target="11" />
+      <module name="feedback-service" target="11" />
+      <module name="fitmyjob" target="11" />
+      <module name="job-search-service" target="11" />
+      <module name="job-seeker-service" target="11" />
+      <module name="job-service" target="11" />
+      <module name="messaging-stomp-websocket" target="11" />
+      <module name="recruiter-service" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Aggregator" options="-parameters" />
+      <module name="api-gateway" options="-parameters" />
+      <module name="authentication-service" options="-parameters" />
+      <module name="config-server" options="-parameters" />
+      <module name="email-service" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
+      <module name="feedback-service" options="-parameters" />
+      <module name="job-search-service" options="-parameters" />
+      <module name="job-seeker-service" options="-parameters" />
+      <module name="job-service" options="-parameters" />
+      <module name="messaging-stomp-websocket" options="-parameters" />
+      <module name="recruiter-service" options="-parameters" />
+    </option>
+  </component>
+</project>

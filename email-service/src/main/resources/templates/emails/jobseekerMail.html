@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Email</title>
+    <style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: center;
+    }
+    th {
+        background-color: #96D4D4;
+    }
+    </style>
+</head>
+<body>
+<div>Hi <span th:text="${email.jobSeekerName}"></span>,</div>
+<br/><br/>
+<div>You have successfully applied to <strong th:text="${email.jobName}"></strong></div>
+<br/>
+<div>
+    <table width="50%">
+        <tr>
+            <th>Category</th>
+            <td th:text="${job.jobCategory}"></td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td th:text="${job.jobType}"></td>
+        </tr>
+        <tr>
+            <th>Location</th>
+            <td th:text="${job.jobLocation}"></td>
+        </tr>
+        <tr>
+            <th>Skills</th>
+            <td th:text="${job.jobSkills}"></td>
+        </tr>
+        <tr>
+            <th>Experienced</th>
+            <td th:text="${job.experience}"></td>
+        </tr>
+        <tr>
+            <th>Salary</th>
+            <td th:text="${job.salary}"></td>
+        </tr>
+        <tr>
+            <th>Company Name</th>
+            <td th:text="${job.companyName}"></td>
+        </tr>
+        <tr>
+            <th>Company Type</th>
+            <td th:text="${job.companyType}"></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td th:text="${job.description}"></td>
+        </tr>
+    </table>
+</div>
+<br/>
+<div>Recruiter will contact you for further process</div>
+<br/>
+<p>
+    Regards,<br/>
+    <em>FitMyJob</em>
+</p>
+<img src="cid:attachment.png" alt="FitMyJob Logo" width="160" height="160"/>
+</body>
+</html>

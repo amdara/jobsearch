@@ -1,0 +1,203 @@
+version: "3"
+services:
+
+#Services configuration
+  # 1)Eureka server configuration
+  eureka-server:
+    image: eureka-server:1.0
+    build: eureka-server/
+    container_name: eureka-server
+    ports:
+      - 9001:8761
+
+  # 2)Api gateway configuration
+  api-gateway:
+    image: api-gateway:1.0
+    build: api-gateway/
+    container_name: api-gateway
+    ports:
+      - 9002:9096
+    links:
+      - eureka-server
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka/
+
+  # 3)Authentication service configuration
+  authentication-service:
+    image: authentication-service:1.0
+    build: authentication-service/
+    container_name: authentication-service
+    ports:
+      - 9003:1992
+    links:
+      - eureka-server
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka/
+    depends_on:
+      - fitmyjobmysqldb
+      - rabbitmq
+
+  # 4)Jobseeker service configuration
+  job-seeker-service:
+    image: job-seeker-service:1.0
+    build: job-seeker-service/
+    container_name: job-seeker-service
+    ports:
+      - 9004:9091
+    links:
+      - eureka-server
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka/
+    depends_on:
+      - fitmyjobmongodb
+      - rabbitmq
+
+  # 5)Recruiter service configuration
+  recruiter-service:
+    image: recruiter-service:1.0
+    build: recruiter-service/
+    container_name: recruiter-service
+    ports:
+      - 9005:8099
+    links:
+      - eureka-server
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka/
+    depends_on:
+     - rabbitmq
+     - fitmyjobmongodb
+
+  # 6)Job service configuration
+  job-service:
+    image: job-service:1.0
+    build: job-service/
+    container_name: job-service
+    ports:
+      - 9006:9090
+    links:
+      - eureka-server
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka/
+    depends_on:
+      - fitmyjobmongodb
+      - rabbitmq
+
+
+  # 7)Job search service configuration
+  job-search-service:
+    image: job-search-service:1.0
+    build: job-search-service/
+    container_name: job-search-service
+    ports:
+      - 9007:8888
+    links:
+      - eureka-server
+    environment:
+     - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka/
+    depends_on:
+      - fitmyjobmongodb
+      - rabbitmq
+
+
+  # 8)Email service configuration
+  email-service:
+    image: email-service:1.0
+    build: email-service/
+    container_name: email-service
+    ports:
+      - 9008:8070
+    links:
+      - eureka-server
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka/
+    depends_on:
+      - rabbitmq
+
+  # 9)Feedback service configuration
+  feedback-service:
+    image: feedback-service:1.0
+    build: feedback-service/
+    container_name: feedback-service
+    ports:
+      - 9009:9095
+    links:
+      - eureka-server
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka/
+    depends_on:
+      - fitmyjobmongodb
+      - rabbitmq
+
+  # 10)Chat service configuration
+  chat-service:
+    image: chat-service:1.0
+    build: chat-service/
+    container_name: chat-service
+    ports:
+      - 9010:8090
+    links:
+      - eureka-server
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka/
+    depends_on:
+      - fitmyjobmongodb
+      - rabbitmq
+
+
+#Database configuration
+  # 1)MongoDB configuration
+  fitmyjobmongodb:
+    image: mongo:latest
+    container_name: "fitmyjobmongodb"
+    ports:
+      - 27018:27017
+
+  # 2)MySQL database configuration
+  fitmyjobmysqldb:
+    image: mysql:latest
+    container_name: "fitmyjobmysqldb"
+    environment:
+      - MYSQL_ROOT_PASSWORD=Pass@123
+      - MYSQL_DATABASE=fitmyjob
+      - MYSQL_PASSWORD=Pass@123
+    ports:
+      - 3307:3306
+
+
+#RabbitMQ configuration
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3-management
+    ports:
+      - 5673:5672
+      - 15673:15672
+    environment:
+      AMQP_URL: 'amqp://rabbitmq?connection_attempts=5&retry_delay=5'
+      RABBITMQ_DEFAULT_USER: "guest"
+      RABBITMQ_DEFAULT_PASS: "guest"
+
+
+
+
+
+
+#  eureka-server:
+#    build: eureka-server/ .
+#    image: eureka-server:1.0
+#    container_name: eureka-server
+#    restart: always
+#    network_mode: "host"
+#    hostname: localhost
+#    ports:
+#      - 8076:8076
+
+#  api-gateway:
+#    build: api-gateway/
+#    container_name: api-gateway
+#    depends_on:
+#      - eureka-server
+#    restart: always
+#    network_mode: "host"
+#    hostname: localhost
+#    ports:
+#      - 8086:8086

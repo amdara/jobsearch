@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/aggregator/Aggregator.iml" filepath="$PROJECT_DIR$/aggregator/Aggregator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api-gateway/api-gateway.iml" filepath="$PROJECT_DIR$/api-gateway/api-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/authentication-service/authentication-service.iml" filepath="$PROJECT_DIR$/authentication-service/authentication-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-server/config-server.iml" filepath="$PROJECT_DIR$/config-server/config-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/email-service/email-service.iml" filepath="$PROJECT_DIR$/email-service/email-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-server/eureka-server.iml" filepath="$PROJECT_DIR$/eureka-server/eureka-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/feedback-service/feedback-service.iml" filepath="$PROJECT_DIR$/feedback-service/feedback-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/fitmyjob.iml" filepath="$PROJECT_DIR$/.idea/fitmyjob.iml" />
+      <module fileurl="file://$PROJECT_DIR$/job-search-service/job-search-service.iml" filepath="$PROJECT_DIR$/job-search-service/job-search-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/job-seeker-service/job-seeker-service.iml" filepath="$PROJECT_DIR$/job-seeker-service/job-seeker-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/job-service/job-service.iml" filepath="$PROJECT_DIR$/job-service/job-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chat-service/messaging-stomp-websocket.iml" filepath="$PROJECT_DIR$/chat-service/messaging-stomp-websocket.iml" />
+      <module fileurl="file://$PROJECT_DIR$/recruiter-service/recruiter-service.iml" filepath="$PROJECT_DIR$/recruiter-service/recruiter-service.iml" />
+    </modules>
+  </component>
+</project>

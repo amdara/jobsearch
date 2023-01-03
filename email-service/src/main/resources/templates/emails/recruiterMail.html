@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Email</title>
+</head>
+<body>
+<div>Hi <span th:text="${email.recruiterName}"></span>,</div><br/><br/>
+<div><span th:text="${email.jobSeekerName}"></span> has applied to <strong th:text="${email.jobName}"></strong></div><br/><br/>
+<div>Please find the resume attached with this mail.</div><br/>
+<p>
+    Regards,<br/>
+    <em>FitMyJob</em>
+</p>
+<img src="cid:attachment.png" alt="FitMyJob Logo" width="160" height="160" />
+</body>
+</html>
